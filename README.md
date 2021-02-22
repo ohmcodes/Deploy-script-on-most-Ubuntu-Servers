@@ -38,3 +38,25 @@ Note: alias <command_scirpt> = the file (make sure you remove spaces thats only 
 
 alias testme=~/<path_to_your_desired_dir>/deploy_script
 ```
+
+
+## Activate bash_aliases without restarting the machine
+```
+source ~/.bashrc
+```
+
+## If you encounter asking a server password with sudo command
+```
+$echo <password> | sudo -S <command>
+
+$./configure && make && echo <password> | sudo -S make install && halt
+
+
+Note: replace <password> with your password.
+
+OTHER Examples
+
+echo <password> | sudo systemctl daemon-reload &&
+sudo systemctl restart gunicorn &&
+sudo service nginx restart
+```
