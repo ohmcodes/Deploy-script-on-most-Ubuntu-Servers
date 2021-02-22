@@ -36,7 +36,7 @@ sudo nano ~/.bash_aliases
 type in:
 Note: alias <command_scirpt> = the file (make sure you remove spaces thats only representation)
 
-alias testme=~/<path_to_your_desired_dir>/deploy_script
+alias deploy=~/<path_to_your_desired_dir>/deploy_script
 ```
 
 
