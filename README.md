@@ -60,3 +60,36 @@ echo <password> | sudo systemctl daemon-reload &&
 sudo systemctl restart gunicorn &&
 sudo service nginx restart
 ```
+
+
+## Sample Bash
+```
+#!/bin/bash
+
+# Define a timestamp function
+timestamp=$(date +%d/%m/%Y%T)
+dir=<path_to_error_logs>
+
+echo "${timestamp} Activating source" >> ${dir}/logs/deploy/errors.log
+
+source $dir/bin/activate
+
+echo "${timestamp} Updating Repo..." >> ${dir}/logs/deploy/errors.log
+
+cd ${dir}/ppem && git pull --no-edit >> ${dir}/logs/deploy/errors.log
+
+echo "${timestamp} Applying Changes..." >> ${dir}/logs/deploy/errors.log
+
+echo yes | python manage.py collectstatic >> ${dir}/logs/deploy/errors.log
+
+echo "${timestamp} Restarting Engine..." >> ${dir}/logs/deploy/errors.log
+
+sudo systemctl daemon-reload >> ${dir}/logs/deploy/errors.log
+
+sudo systemctl restart gunicorn >> ${dir}/logs/deploy/errors.log
+
+sudo service nginx restart >> ${dir}/logs/deploy/errors.log
+
+echo "================================================================" >> ${dir}/logs/deploy/error>
+
+```
